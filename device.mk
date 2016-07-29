@@ -420,3 +420,9 @@ ifeq ($(TARGET_BUILD_VARIANT),user)
   # PRODUCT_VENDOR_VERITY_PARTITION := /dev/block/platform/soc.0/f9824900.sdhci/by-name/vendor
   $(call inherit-product, build/target/product/verity.mk)
 endif
+
+# TWRP
+ifeq ($(RECOVERY_VARIANT),twrp)
+PRODUCT_COPY_FILES += \
+  device/huawei/angler/recovery.fstab:recovery/root/etc/twrp.fstab
+endif
