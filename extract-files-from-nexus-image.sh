@@ -27,16 +27,6 @@ if [[ ! -d "$MY_DIR" ]]; then MY_DIR="$PWD"; fi
 
 REPO_ROOT="$MY_DIR"/../../..
 
-function build_smali(){
-  local outdir="$1"
-  rm -rf $outdir
-  git clone https://github.com/JesusFreke/smali $outdir
-  cd $outdir
-  git checkout v2.1.2
-  ./gradlew build
-  cd -
-}
-
 function md5verify(){
   local md5=$1
   local file=$2
@@ -111,11 +101,6 @@ checkutils simg2img unzip md5sum sudo wget
 
 TMPDIR="/tmp/extract-files/$DEVICE/$BUILD"
 mkdir -p "$TMPDIR"
-export SMALI_BASE="$TMPDIR/smali"
-export SMALIJAR="$SMALI_BASE/smali/build/libs/smali.jar"
-export BAKSMALIJAR="$SMALI_BASE/baksmali/build/libs/baksmali.jar"
-build_smali "$SMALI_BASE"
-
 unpack_factory "$TMPDIR"
 #[ ! -d $TMPDIR/system/vendor ] && [ ! -L $TMPDIR/system/vendor ] && ln -fs $TMPDIR/vendor $TMPDIR/system/vendor
 #[ ! -d $TMPDIR/system/system ] && [ ! -L $TMPDIR/system/system ] && ln -fs $TMPDIR/system $TMPDIR/system/system
