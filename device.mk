@@ -421,8 +421,11 @@ ifeq ($(TARGET_BUILD_VARIANT),user)
   $(call inherit-product, build/target/product/verity.mk)
 endif
 
-# TWRP
+# RECOVERY_VARIANT := twrp
+## comment out ^ to use cm recovery
+#TWRP
 ifeq ($(RECOVERY_VARIANT),twrp)
+WITH_CM_CHARGER := false
 PRODUCT_COPY_FILES += \
   device/huawei/angler/recovery.fstab:recovery/root/etc/twrp.fstab
 endif

@@ -156,8 +156,6 @@ BOARD_HARDWARE_CLASS := \
     hardware/cyanogen/cmhw \
     device/huawei/angler/cmhw
 
-# RECOVERY_VARIANT := twrp
-# comment out ^ to use cm recovery
 ifeq ($(RECOVERY_VARIANT),twrp)
 TARGET_RECOVERY_FSTAB = device/huawei/angler/recovery.fstab
 # TWRP
