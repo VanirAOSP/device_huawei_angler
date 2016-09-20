@@ -159,8 +159,7 @@ USE_CLANG_PLATFORM_BUILD := true
 # CMHW
 BOARD_USES_CYANOGEN_HARDWARE := true
 BOARD_HARDWARE_CLASS := \
-    hardware/cyanogen/cmhw \
-    device/huawei/angler/cmhw
+    hardware/cyanogen/cmhw
 
 ifeq ($(RECOVERY_VARIANT),twrp)
 TARGET_RECOVERY_FSTAB = device/huawei/angler/recovery.fstab
