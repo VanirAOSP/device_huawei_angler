@@ -55,11 +55,14 @@ fi
 
 setup_vendor "$DEVICE" "$VENDOR" "$REPO_ROOT"
 
+# Extract the device specific files that always occur in /system
+extract "$MY_DIR/cm-proprietary-blobs.txt" "$SRC"
+
 ## Handle blobs that may be in /system OR /vendor (only occurs when extracting from nexus images)
 
 # if we're extracting from factory images, pre-hardlink missing blobs from /vendor to /system
 if [ "$SRC" != "adb" ]; then
-  for file in $(egrep -v '(^#|^$)' "$MY_DIR"/proprietary-blobs.txt); do
+  for file in $(egrep -v '(^#|^$)' "$MY_DIR"/cm-proprietary-blobs-vendorimg.txt); do
 
      oldifs=$IFS IFS=":" parsing_array=($file) IFS=$oldifs
 
@@ -70,14 +73,9 @@ if [ "$SRC" != "adb" ]; then
      fi
      destdir=$(dirname "$destfile")
 
-     if [ -f $SRC/system/$destfile ]; then 
+     if [ -f $SRC/system/$destfile ]; then
        #skip already hardlinked files
-       continue; 
-     fi
-
-     if [ ! -f $SRC/vendor/$destfile ]; then
-       echo "$destfilr is missing from system AND vendor"
-       continue
+       continue;
      fi
 
      if [ ! -d "$SRC/system/$destdir" ]; then
@@ -88,7 +86,7 @@ if [ "$SRC" != "adb" ]; then
   done
 fi
 
-# Extract the device specific files that always occur in /system
-extract "$MY_DIR/proprietary-blobs.txt" "$SRC"
+# Extract "sometimes system" blobs
+extract "$MY_DIR/cm-proprietary-blobs-vendorimg.txt" "$SRC"
 
 "$MY_DIR"/setup-makefiles.sh
