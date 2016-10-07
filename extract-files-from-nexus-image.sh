@@ -79,7 +79,7 @@ function unpack_factory(){
   mkdir -p $outdir/extracted
   local extension="$(echo "$factory_file" | sed 's/.*\.//g')"
   case "$extension" in tgz) tar -C "$outdir" -xvzf "$factory_file";;
-                       zip) unzip -d "$outdir" "$factory_file";;
+                       zip) unzip -u -o -d "$outdir" "$factory_file";;
                        *) echo "Unhandled factory image extension: $extension"; exit 1;;
   esac
 
