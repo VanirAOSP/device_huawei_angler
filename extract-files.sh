@@ -73,9 +73,9 @@ if [ "$SRC" != "adb" ]; then
      fi
      destdir=$(dirname "$destfile")
 
-     if [ -f $SRC/system/$destfile ]; then 
+     if [ -f $SRC/system/$destfile ]; then
        #skip already hardlinked files
-       continue; 
+       continue;
      fi
 
      if [ ! -d "$SRC/system/$destdir" ]; then
