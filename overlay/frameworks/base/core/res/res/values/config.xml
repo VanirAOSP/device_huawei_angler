@@ -447,6 +447,9 @@
          config to 7. -->
     <integer name="config_deviceHardwareWakeKeys">64</integer>
 
+    <!-- Permit doze mode to operate -->
+    <bool name="config_enableAutoPowerModes">true</bool>
+
     <!-- Whether WiFi display is supported by this device.
          There are many prerequisites for this feature to work correctly.
          Here are a few of them:
@@ -460,9 +463,4 @@
          * The device must be provisioned with HDCP keys (for protected content).
     -->
     <bool name="config_enableWifiDisplay">true</bool>
-
-    <!-- Hide Project Fi app unless it is being used -->
-    <string-array name="config_disabledUntilUsedPreinstalledCarrierApps">
-        <item>com.google.android.apps.tycho</item>
-    </string-array>
 </resources>

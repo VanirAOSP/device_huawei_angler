@@ -218,6 +218,10 @@ PRODUCT_PACKAGES += \
     libgps.utils \
     gps.msm8994
 
+# Gello
+PRODUCT_PACKAGES += \
+    Gello
+
 # Sensor & activity_recognition HAL
 TARGET_USES_NANOHUB_SENSORHAL := true
 NANOHUB_SENSORHAL_LID_STATE_ENABLED := true
@@ -290,6 +294,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.ril.force_eri_from_xml=true
+
+PRODUCT_PROPERTY_OVERRIDES += \
 
 # VR HAL
 PRODUCT_PACKAGES += \
@@ -460,6 +466,10 @@ endif
 $(call inherit-product, frameworks/native/build/phone-xxxhdpi-3072-dalvik-heap.mk)
 $(call inherit-product-if-exists, frameworks/native/build/phone-xxxhdpi-3072-hwui-memory.mk)
 
+# IO Scheduler
+PRODUCT_PROPERTY_OVERRIDES += \
+    sys.io.scheduler=bfq
+
 # drmservice prop
 PRODUCT_PROPERTY_OVERRIDES += \
     drm.service.enabled=true
@@ -485,7 +495,7 @@ PRODUCT_COPY_FILES += \
 
 # only include verity on user builds for CM
 ifeq ($(TARGET_BUILD_VARIANT),user)
-   PRODUCT_COPY_FILES += device/huawei/angler/fstab-verity.angler:root/fstab.angler
+  PRODUCT_COPY_FILES += device/huawei/angler/fstab-verity.angler:root/fstab.angler
 
   # setup dm-verity configs.
   PRODUCT_SYSTEM_VERITY_PARTITION := /dev/block/platform/soc.0/f9824900.sdhci/by-name/system

@@ -50,6 +50,7 @@ BOARD_KERNEL_CMDLINE := androidboot.hardware=angler androidboot.console=ttyHSL0 
 BOARD_MKBOOTIMG_ARGS := --ramdisk_offset $(BOARD_RAMDISK_OFFSET) --tags_offset $(BOARD_KERNEL_TAGS_OFFSET)
 
 BOARD_USES_ALSA_AUDIO := true
+
 # Needed for VoLTE
 AUDIO_FEATURE_ENABLED_MULTI_VOICE_SESSIONS := true
 AUDIO_FEATURE_ENABLED_DSM_FEEDBACK := true
@@ -159,7 +160,8 @@ USE_CLANG_PLATFORM_BUILD := true
 # CMHW
 BOARD_USES_CYANOGEN_HARDWARE := true
 BOARD_HARDWARE_CLASS := \
-    hardware/cyanogen/cmhw
+    hardware/cyanogen/cmhw \
+    device/huawei/angler/cmhw
 
 ifeq ($(RECOVERY_VARIANT),twrp)
 TARGET_RECOVERY_FSTAB = device/huawei/angler/recovery.fstab
