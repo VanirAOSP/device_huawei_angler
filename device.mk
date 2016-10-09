@@ -218,10 +218,6 @@ PRODUCT_PACKAGES += \
     libgps.utils \
     gps.msm8994
 
-# Gello
-PRODUCT_PACKAGES += \
-    Gello
-
 # Sensor & activity_recognition HAL
 TARGET_USES_NANOHUB_SENSORHAL := true
 NANOHUB_SENSORHAL_LID_STATE_ENABLED := true
