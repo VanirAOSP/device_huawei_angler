@@ -21,6 +21,7 @@
 
 # Enable support for chinook sensorhub
 TARGET_USES_CHINOOK_SENSORHUB := false
+
 PRODUCT_COPY_FILES += \
     device/huawei/angler/init.angler.rc:root/init.angler.rc \
     device/huawei/angler/init.angler.usb.rc:root/init.angler.usb.rc \
@@ -209,14 +210,14 @@ PRODUCT_PACKAGES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     persist.camera.cpp.duplication=false
 
-# Gello
-PRODUCT_PACKAGES += \
-    Gello
-
 # GPS
 PRODUCT_PACKAGES += \
     libgps.utils \
     gps.msm8994
+
+# Gello
+PRODUCT_PACKAGES += \
+    Gello
 
 # Sensor & activity_recognition HAL
 TARGET_USES_NANOHUB_SENSORHAL := true
@@ -244,6 +245,10 @@ PRODUCT_PACKAGES += \
     nanotool \
     sensortest
 endif
+
+# for off charging mode
+PRODUCT_PACKAGES += \
+    charger_res_images
 
 PRODUCT_PACKAGES += \
     libwpa_client \
@@ -286,12 +291,23 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.radio.data_no_toggle=1
 
 PRODUCT_PROPERTY_OVERRIDES += \
-    persist.radio.data_con_rprt=true
+	persist.radio.data_con_rprt=true
 
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.ril.force_eri_from_xml=true
 
 PRODUCT_PROPERTY_OVERRIDES += \
+    ro.hwui.texture_cache_size=72 \
+    ro.hwui.layer_cache_size=48 \
+    ro.hwui.r_buffer_cache_size=8 \
+    ro.hwui.path_cache_size=32 \
+    ro.hwui.gradient_cache_size=1 \
+    ro.hwui.drop_shadow_cache_size=6 \
+    ro.hwui.texture_cache_flushrate=0.4 \
+    ro.hwui.text_small_cache_width=1024 \
+    ro.hwui.text_small_cache_height=1024 \
+    ro.hwui.text_large_cache_width=2048 \
+    ro.hwui.text_large_cache_height=1024
 
 # VR HAL
 PRODUCT_PACKAGES += \
@@ -439,10 +455,6 @@ endif # userdebug eng
 PRODUCT_PROPERTY_OVERRIDES += \
     persist.radio.redir_party_num=0
 
-# IO Scheduler
-PRODUCT_PROPERTY_OVERRIDES += \
-    sys.io.scheduler=bfq
-    
 # OEM Unlock reporting
 ADDITIONAL_DEFAULT_PROPERTIES += \
     ro.oem_unlock_supported=1
@@ -458,13 +470,12 @@ ifneq (,$(filter userdebug, $(TARGET_BUILD_VARIANT)))
     $(call add-product-dex-preopt-module-config,wifi-service,--generate-mini-debug-info)
 endif
 
-# Dalvik/HWUI
-$(call inherit-product, frameworks/native/build/phone-xxxhdpi-3072-dalvik-heap.mk)
-$(call inherit-product-if-exists, frameworks/native/build/phone-xxxhdpi-3072-hwui-memory.mk)
-
 # IO Scheduler
 PRODUCT_PROPERTY_OVERRIDES += \
     sys.io.scheduler=bfq
+
+# setup dalvik vm configs.
+$(call inherit-product, frameworks/native/build/phone-xhdpi-2048-dalvik-heap.mk)
 
 # drmservice prop
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -472,12 +483,14 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # facelock properties
 PRODUCT_PROPERTY_OVERRIDES += \
-    ro.facelock.black_timeout=400 \
-    ro.facelock.det_timeout=1500 \
-    ro.facelock.rec_timeout=2500 \
-    ro.facelock.lively_timeout=2500 \
-    ro.facelock.est_max_time=600 \
-    ro.facelock.use_intro_anim=false
+    ro.facelock.black_timeout=700 \
+    ro.facelock.det_timeout=2500 \
+    ro.facelock.rec_timeout=3500 \
+    ro.facelock.est_max_time=600
+
+# Enable sdcardfs
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.sys.sdcardfs=true
 
 $(call inherit-product-if-exists, hardware/qcom/msm8994/msm8994.mk)
 $(call inherit-product-if-exists, vendor/qcom/gpu/msm8994/msm8994-gpu-vendor.mk)
@@ -500,7 +513,7 @@ ifeq ($(TARGET_BUILD_VARIANT),user)
   $(call inherit-product, build/target/product/verity.mk)
 endif
 
-# RECOVERY_VARIANT := twrp
+#RECOVERY_VARIANT := twrp
 ## comment out ^ to use cm recovery
 #TWRP
 ifeq ($(RECOVERY_VARIANT),twrp)
