@@ -20,10 +20,4 @@
 # <src relative to root of extracted filesystem>:<dst relative to system>
 
 -app/ims/ims.apk
-bin/dsm_ctrl
-lib64/libimscamera_jni.so
-lib64/libimscamera_jni.so:app/ims/lib/arm64/libimscamera_jni.so
-lib64/libimsmedia_jni.so
-lib64/libimsmedia_jni.so:app/ims/lib/arm64/libimsmedia_jni.so
-lib/libimscamera_jni.so
-lib/libimsmedia_jni.so
+-app/TimeService/TimeService.apk
