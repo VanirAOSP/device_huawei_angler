@@ -193,6 +193,10 @@ PRODUCT_PACKAGES += \
     sensortool.angler \
     nano4x1.bin
 
+# for off charging mode
+#PRODUCT_PACKAGES += \
+#    charger_res_images
+
 PRODUCT_PACKAGES += \
     libwpa_client \
     hostapd \
