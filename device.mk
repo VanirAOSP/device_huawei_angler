@@ -297,6 +297,19 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.ril.force_eri_from_xml=true
 
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.hwui.texture_cache_size=72 \
+    ro.hwui.layer_cache_size=48 \
+    ro.hwui.r_buffer_cache_size=8 \
+    ro.hwui.path_cache_size=32 \
+    ro.hwui.gradient_cache_size=1 \
+    ro.hwui.drop_shadow_cache_size=6 \
+    ro.hwui.texture_cache_flushrate=0.4 \
+    ro.hwui.text_small_cache_width=1024 \
+    ro.hwui.text_small_cache_height=1024 \
+    ro.hwui.text_large_cache_width=2048 \
+    ro.hwui.text_large_cache_height=1024
+
 # VR HAL
 PRODUCT_PACKAGES += \
     vr.angler
@@ -415,6 +428,12 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
    librmnetctl
 
+# limit dex2oat threads to improve thermals
+PRODUCT_PROPERTY_OVERRIDES += \
+    dalvik.vm.boot-dex2oat-threads=4 \
+    dalvik.vm.dex2oat-threads=4 \
+    dalvik.vm.image-dex2oat-threads=4
+
 # Modem debugger
 ifneq (,$(filter userdebug eng, $(TARGET_BUILD_VARIANT)))
 ifeq (,$(filter aosp_angler, $(TARGET_PRODUCT)))
@@ -456,19 +475,8 @@ endif
 PRODUCT_PROPERTY_OVERRIDES += \
     sys.io.scheduler=bfq
 
-# Dalvik/HWUI
-$(call inherit-product, frameworks/native/build/phone-xxxhdpi-3072-dalvik-heap.mk)
-$(call inherit-product-if-exists, frameworks/native/build/phone-xxxhdpi-3072-hwui-memory.mk)
-
-# Force dex2oat not to use swap file
-PRODUCT_PROPERTY_OVERRIDES += \
-    dalvik.vm.dex2oat-swap=false
-
-# limit dex2oat threads to improve thermals
-PRODUCT_PROPERTY_OVERRIDES += \
-    dalvik.vm.boot-dex2oat-threads=4 \
-    dalvik.vm.dex2oat-threads=4 \
-    dalvik.vm.image-dex2oat-threads=4
+# setup dalvik vm configs.
+$(call inherit-product, frameworks/native/build/phone-xhdpi-2048-dalvik-heap.mk)
 
 # drmservice prop
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -491,6 +499,15 @@ $(call inherit-product-if-exists, vendor/qcom/gpu/msm8994/msm8994-gpu-vendor.mk)
 # copy wlan firmware
 $(call inherit-product-if-exists, hardware/broadcom/wlan/bcmdhd/firmware/bcm4358/device-bcm.mk)
 
+#RECOVERY_VARIANT := twrp
+## comment out ^ to use cm recovery
+#TWRP
+ifeq ($(RECOVERY_VARIANT),twrp)
+WITH_CM_CHARGER := false
+PRODUCT_COPY_FILES += \
+  device/huawei/angler/recovery.fstab:recovery/root/etc/twrp.fstab
+endif
+
 # GPS configuration
 PRODUCT_COPY_FILES += \
     device/huawei/angler/location/etc/gps.conf:system/etc/gps.conf:qcom
@@ -504,15 +521,6 @@ ifeq ($(TARGET_BUILD_VARIANT),user)
   # don't check verity on vendor partition as we don't compile it with the boot and system image
   # PRODUCT_VENDOR_VERITY_PARTITION := /dev/block/platform/soc.0/f9824900.sdhci/by-name/vendor
   $(call inherit-product, build/target/product/verity.mk)
-endif
-
-#RECOVERY_VARIANT := twrp
-## comment out ^ to use cm recovery
-#TWRP
-ifeq ($(RECOVERY_VARIANT),twrp)
-WITH_CM_CHARGER := false
-PRODUCT_COPY_FILES += \
-  device/huawei/angler/recovery.fstab:recovery/root/etc/twrp.fstab
 endif
 
 # b/28992626
