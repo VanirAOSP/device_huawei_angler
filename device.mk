@@ -516,7 +516,7 @@ endif
 
 # GPS configuration
 PRODUCT_COPY_FILES += \
-    device/huawei/angler/location/etc/gps.conf:system/etc/gps.conf:qcom
+    device/huawei/angler/gps.conf:system/etc/gps.conf:qcom
 
 # only include verity on user builds for CM
 ifeq ($(TARGET_BUILD_VARIANT),user)
