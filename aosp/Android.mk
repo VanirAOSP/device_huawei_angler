@@ -23,10 +23,10 @@ LOCAL_POST_INSTALL_CMD := \
     mkdir -p $(PRODUCT_OUT)/system/etc/cne; \
     ln -sf /vendor/etc/cne/profile.txt $(PRODUCT_OUT)/system/etc/cne/profile.txt; \
     mkdir -p $(PRODUCT_OUT)/system/bin; \
-    ln -sf /vendor/bin/imscmservice $(PRODUCT_OUT)/system/bin/imscmservice; \
-    ln -sf /vendor/bin/imsdatadaemon $(PRODUCT_OUT)/system/bin/imsdatadaemon; \
-    ln -sf /vendor/bin/imsqmidaemon $(PRODUCT_OUT)/system/bin/imsqmidaemon; \
-    ln -sf /vendor/bin/ims_rtp_daemon $(PRODUCT_OUT)/system/bin/ims_rtp_daemon; }
+    ln -sf /system/bin/imscmservice $(PRODUCT_OUT)/vendor/bin/imscmservice; \
+    ln -sf /system/bin/imsdatadaemon $(PRODUCT_OUT)/vendor/bin/imsdatadaemon; \
+    ln -sf /system/bin/imsqmidaemon $(PRODUCT_OUT)/vendor/bin/imsqmidaemon; \
+    ln -sf /system/bin/ims_rtp_daemon $(PRODUCT_OUT)/vendor/bin/ims_rtp_daemon; }
 
 include $(BUILD_PHONY_PACKAGE)
 
