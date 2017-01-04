@@ -518,7 +518,7 @@ endif
 PRODUCT_COPY_FILES += \
     device/huawei/angler/gps.conf:system/etc/gps.conf:qcom
 
-# only include verity on user builds for CM
+# only include verity on user builds for Lineage
 ifeq ($(TARGET_BUILD_VARIANT),user)
   PRODUCT_COPY_FILES += device/huawei/angler/fstab-verity.angler:root/fstab.angler
 
