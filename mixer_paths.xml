@@ -28,12 +28,12 @@
     <ctl name="HPHR Volume" value="20" />
     <ctl name="RX1 Digital Volume" value="84" />
     <ctl name="RX2 Digital Volume" value="84" />
-    <ctl name="RX3 Digital Volume" value="86" />
-    <ctl name="RX4 Digital Volume" value="86" />
-    <ctl name="RX5 Digital Volume" value="88" />
-    <ctl name="RX6 Digital Volume" value="88" />
-    <ctl name="RX7 Digital Volume" value="90" />
-    <ctl name="RX8 Digital Volume" value="90" />
+    <ctl name="RX3 Digital Volume" value="84" />
+    <ctl name="RX4 Digital Volume" value="84" />
+    <ctl name="RX5 Digital Volume" value="84" />
+    <ctl name="RX6 Digital Volume" value="84" />
+    <ctl name="RX7 Digital Volume" value="84" />
+    <ctl name="RX8 Digital Volume" value="84" />
     <ctl name="ADC1 Volume" value="19" />
     <ctl name="ADC2 Volume" value="19" />
     <ctl name="ADC3 Volume" value="0" />
@@ -1832,8 +1832,8 @@
         <path name="headphones" />
         <ctl name="RX7 MIX1 INP1" value="RX1" />
         <ctl name="RX8 MIX1 INP1" value="RX2" />
-        <ctl name="RX7 Digital Volume" value="90" />
-        <ctl name="RX8 Digital Volume" value="90" />
+        <ctl name="RX7 Digital Volume" value="84" />
+        <ctl name="RX8 Digital Volume" value="84" />
         <ctl name="COMP0 Switch" value="1" />
     </path>
 
@@ -1841,8 +1841,8 @@
         <path name="headphones" />
         <ctl name="RX3 MIX1 INP1" value="RX1" />
         <ctl name="RX5 MIX1 INP1" value="RX2" />
-        <ctl name="RX3 Digital Volume" value="84" />
-        <ctl name="RX5 Digital Volume" value="84" />
+        <ctl name="RX3 Digital Volume" value="68" />
+        <ctl name="RX5 Digital Volume" value="68" />
         <ctl name="LINEOUT1 Volume" value="84" />
         <ctl name="LINEOUT2 Volume" value="84" />
         <ctl name="COMP2 Switch" value="1" />
@@ -1871,8 +1871,8 @@
         <ctl name="RX2 MIX1 INP1" value="RX2" />
         <ctl name="CLASS_H_DSM MUX" value="DSM_HPHL_RX1" />
         <ctl name="HPHL DAC Switch" value="1" />
-        <ctl name="RX1 Digital Volume" value="92" />
-        <ctl name="RX2 Digital Volume" value="92" />
+        <ctl name="RX1 Digital Volume" value="84" />
+        <ctl name="RX2 Digital Volume" value="84" />
     </path>
 
     <path name="speaker-and-anc-headphones">
@@ -1917,8 +1917,8 @@
         <ctl name="RX2 MIX2 INP1" value="IIR1" />
         <ctl name="CLASS_H_DSM MUX" value="DSM_HPHL_RX1" />
         <ctl name="HPHL DAC Switch" value="1" />
-        <ctl name="RX1 Digital Volume" value="92" />
-        <ctl name="RX2 Digital Volume" value="92" />
+        <ctl name="RX1 Digital Volume" value="84" />
+        <ctl name="RX2 Digital Volume" value="84" />
     </path>
 
     <path name="voice-anc-fb-headphones">
@@ -1946,8 +1946,8 @@
         <ctl name="RX2 MIX2 INP1" value="IIR1" />
         <ctl name="CLASS_H_DSM MUX" value="DSM_HPHL_RX1" />
         <ctl name="HPHL DAC Switch" value="1" />
-        <ctl name="RX1 Digital Volume" value="90" />
-        <ctl name="RX2 Digital Volume" value="90" />
+        <ctl name="RX1 Digital Volume" value="81" />
+        <ctl name="RX2 Digital Volume" value="81" />
     </path>
 
     <path name="speaker-and-anc-headphones-liquid">
@@ -1956,8 +1956,8 @@
         <ctl name="RX5 MIX1 INP1" value="RX2" />
         <ctl name="RDAC5 MUX" value="DEM3_INV" />
         <ctl name="RDAC7 MUX" value="DEM5_INV" />
-        <ctl name="RX3 Digital Volume" value="84" />
-        <ctl name="RX5 Digital Volume" value="84" />
+        <ctl name="RX3 Digital Volume" value="68" />
+        <ctl name="RX5 Digital Volume" value="68" />
         <ctl name="LINEOUT1 Volume" value="20" />
         <ctl name="LINEOUT2 Volume" value="20" />
         <ctl name="LINEOUT3 Volume" value="20" />
