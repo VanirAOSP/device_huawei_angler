@@ -408,14 +408,14 @@ service wpa_supplicant /system/bin/wpa_supplicant \
     disabled
     oneshot
 
-service imsqmidaemon /vendor/bin/imsqmidaemon
+service imsqmidaemon /system/bin/imsqmidaemon
     class main
     user system
     socket ims_qmid stream 0660 system radio
     group radio net_raw log diag
     writepid /dev/cpuset/system-background/tasks
 
-service imsdatadaemon /vendor/bin/imsdatadaemon
+service imsdatadaemon /system/bin/imsdatadaemon
     class main
     user system
     socket ims_datad stream 0660 system radio
@@ -426,7 +426,7 @@ service imsdatadaemon /vendor/bin/imsdatadaemon
 on property:sys.ims.QMI_DAEMON_STATUS=1
     start imsdatadaemon
 
-service imscmservice /vendor/bin/imscmservice
+service imscmservice /system/bin/imscmservice
     class main
     user system
     group radio net_raw diag diag log
