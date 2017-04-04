@@ -17,7 +17,7 @@
 
 export VENDOR=huawei
 export DEVICE=angler
-export BUILD=n2gf7h
+export BUILD=n2g47h
 export FACTORY_URL=https://dl.google.com/dl/android/aosp/angler-n2g47h-factory-f1111327.zip
 export FACTORY_SHA256=f1111327051062c28aa80a96a51f56b1897ecb619a7f3f09696a192420954fdc
 
