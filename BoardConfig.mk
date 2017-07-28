@@ -28,6 +28,7 @@ TARGET_2ND_ARCH_VARIANT := armv7-a-neon
 TARGET_2ND_CPU_ABI := armeabi-v7a
 TARGET_2ND_CPU_ABI2 := armeabi
 TARGET_2ND_CPU_VARIANT := cortex-a53.a57
+TARGET_BIG_LITTLE_VARIANT := cortex-a57.cortex-a53
 
 ENABLE_CPUSETS := true
 
