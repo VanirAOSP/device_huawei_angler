@@ -310,7 +310,6 @@
         <string-array name="signal_dcfailure_receiver_string_array" num="1">
             <item value="com.google.android.carrierentitlement/.VzwActivationReceiver" />
         </string-array>
-        <boolean name="world_phone_bool" value="true" />
     </carrier_config>
     <carrier_config mcc="311" mnc="480" gid1="BA01270000000000">
         <boolean name="carrier_name_override_bool" value="true" />
