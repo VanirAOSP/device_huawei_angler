@@ -370,7 +370,7 @@ service thermal-engine /vendor/bin/thermal-engine
 # QMUX must be in multiple groups to support external process connections
 service qmuxd /vendor/bin/qmuxd
     class main
-    user radio
+    user root
     group radio audio bluetooth wakelock gps
     writepid /dev/cpuset/system-background/tasks
 
@@ -485,7 +485,7 @@ service mcfg-sh /system/bin/init.mcfg.sh
    oneshot
 
 service radio-sh /system/bin/init.radio.sh
-    class late_start
+    class main
     user radio
     group root radio
     oneshot
