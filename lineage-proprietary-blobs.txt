@@ -21,15 +21,16 @@
 
 bin/ssr_setup
 bin/subsystem_ramdump
-# this moved to vendor
-# etc/diag/Angler_Radio-general.cfg
 etc/permissions/cneapiclient.xml
 etc/permissions/com.android.omadm.service.xml
-# no longer exists
-#etc/permissions/com.google.widevine.software.drm.xml
+etc/permissions/com.android.sdm.plugins.connmo.xml
+etc/permissions/com.android.sdm.plugins.sprintdm.xml
+etc/permissions/com.google.android.camera.experimental2016.xml
+etc/permissions/privapp-permissions-angler.xml
 etc/permissions/qcrilhook.xml
-# no longer exists
-#-framework/com.google.widevine.software.drm.jar
+etc/sysconfig/angler_common.xml
+etc/sysconfig/whitelist_com.android.omadm.service.xml
+-framework/com.google.android.camera.experimental2016.jar
 -framework/qcrilhook.jar
 lib64/libfilterpack_facedetect.so
 lib64/libManufacture.so
@@ -38,8 +39,7 @@ lib/libdmengine.so:priv-app/DMService/lib/arm/libdmengine.so
 lib/libdmjavaplugin.so
 lib/libdmjavaplugin.so:priv-app/DMService/lib/arm/libdmjavaplugin.so
 lib/libfilterpack_facedetect.so
-# has moved to vendor
-#lib/soundfx/libfmas.so
+-app/HwSarControlService/HwSarControlService.apk
 -app/Tycho/Tycho.apk:app/Tycho/Tycho.apk:PRESIGNED
 -priv-app/CarrierServices/CarrierServices.apk:priv-app/CarrierServices/CarrierServices.apk:PRESIGNED
 -priv-app/CNEService/CNEService.apk
